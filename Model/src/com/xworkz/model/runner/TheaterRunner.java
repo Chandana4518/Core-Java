@@ -28,6 +28,27 @@ public class TheaterRunner {
 		TheaterDTO theaterDto4=new TheaterDTO("Sampige","Venky", "Venkat", false,"Malleswaram");
 		System.out.println(theaterDto4);
 		theaterRepository.save(theaterDto4);
+		
+		
+		System.out.println("========================================");
+		
+		TheaterDTO dto=theaterRepository.findByMovieName("Jailer");
+		System.out.println(dto);
+		
+		TheaterDTO dto1=theaterRepository.findByTheaterName("Gopalan");
+		System.out.println(dto1);
+		
+		TheaterDTO dto2=theaterRepository.findByLocation("Hebbal");
+		System.out.println(dto2);
+		
+		TheaterDTO[] dto3=theaterRepository.readAll();
+		for(int index=0;index<dto3.length;index++)
+			{
+			if(dto3[index]!=null)
+				{
+				  System.out.println(dto3[index]);
+				}
+			}
 	
 	}
 

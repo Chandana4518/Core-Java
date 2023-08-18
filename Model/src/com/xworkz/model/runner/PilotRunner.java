@@ -29,7 +29,25 @@ public class PilotRunner {
 		System.out.println(pilotDTO4);
 		pilotRepository.save(pilotDTO4);
 		
-
+		
+		System.out.println("===========================");
+		PilotDTO dto=pilotRepository.findByPilotFitness(true);
+		System.out.println(dto);
+		
+		PilotDTO dto1=pilotRepository.findByPilotAge(22);
+		System.out.println(dto1);
+		
+		PilotDTO dto2=pilotRepository.findByPilotSalary(25000);
+		System.out.println(dto2);
+		
+		PilotDTO[] dto3=pilotRepository.readAll();
+		for(int index=0;index<dto3.length;index++)
+		{
+			if(dto3[index]!=null)
+			{
+				System.out.println(dto3[index]);
+			}
+		}
 	}
 
 }

@@ -28,6 +28,25 @@ public class CustomerRunner {
 		CustomerDTO customerDTO4=new CustomerDTO("Harish",28,8739092586L,"Hyderabad",4.6f);
 		System.out.println(customerDTO4);
 		CustomerRepository.save(customerDTO4);
+		
+		System.out.println("===============================");
+		CustomerDTO dto=CustomerRepository.findByCustomerName("Harish");
+		System.out.println(dto);
+		
+		CustomerDTO dto1=CustomerRepository.findByCustomerAge(20);
+		System.out.println(dto1);
+		
+		CustomerDTO dto2=CustomerRepository.findByCustomerLocation("Anantapur");
+		System.out.println(dto2);
+		
+		CustomerDTO[] dto3=CustomerRepository.readAll();
+		for(int index=0;index<dto3.length;index++)
+		{
+			if(dto3[index]!=null)
+			{
+				System.out.println(dto3[index]);
+			}
+		}
 
 
 	}

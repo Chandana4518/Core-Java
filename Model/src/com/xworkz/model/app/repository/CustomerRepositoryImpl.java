@@ -9,8 +9,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
 	@Override
 	public void save(CustomerDTO customerDTO) {
-		
-System.out.println("Invoking CustomerDTO in CustomerDTOImpl");
+		System.out.println("Invoking CustomerDTO in CustomerDTOImpl");
 		
 		if(this.temp<TOTAL_CUSTOMERS)
 		{
@@ -24,6 +23,60 @@ System.out.println("Invoking CustomerDTO in CustomerDTOImpl");
 		}
 		
 		
+	}
+
+	@Override
+	public CustomerDTO findByCustomerName(String name) 
+	{
+		for(int index=0;index<temp;index++)
+		{
+			if(customer[index].getName()==name)
+			{
+				System.out.println("Customer Name is Found");
+				return customer[index];
+			}
+			System.out.println("Name is not matched,moving to next index");
+		}
+		System.out.println("Customer Age is not found in array...");
+		return null;
+	}
+
+	@Override
+	public CustomerDTO findByCustomerAge(int age) 
+	{
+		for(int index=0;index<temp;index++)
+		{
+			if(customer[index].getAge()==age)
+			{
+				System.out.println("Customer Age is Found");
+				return customer[index];
+			}
+			System.out.println("Age is not matched,moving to next index");
+		}
+		System.out.println("Customer Age is not found in array...");
+		return null;
+	}
+
+	@Override
+	public CustomerDTO findByCustomerLocation(String location) 
+	{
+		for(int index=0;index<temp;index++)
+		{
+			if(customer[index].getLocation()==location)
+			{
+				System.out.println("Customer Location is Found");
+				return customer[index];
+			}
+			System.out.println("Location is not matched,moving next index");
+		}
+		System.out.println("Customer Location is not found in array...");
+		return null;
+	}
+
+	@Override
+	public CustomerDTO[] readAll() {
+		System.out.println("Invoking readAll method in CustomerRepositoryImpl");
+		return customer;
 	}
 
 }

@@ -28,6 +28,26 @@ public class MarketRunner {
 		MarketDTO marketDTO4=new MarketDTO("Jerry's Shop ","Form",2000,10,"Kranthi");
 		System.out.println(marketDTO4);
 		marketRepository.save(marketDTO4);
+		
+		System.out.println("==============================");
+		MarketDTO dto=marketRepository.findByOwnerName("Lila");
+		System.out.println(dto);
+		
+		MarketDTO dto1=marketRepository.findByNoOfItems(5);
+		System.out.println(dto1);
+		
+		MarketDTO dto2=marketRepository.findByCapacity(2000);
+		System.out.println(dto2);
+		
+		MarketDTO[] dto3=marketRepository.readAll();
+		for(int index=0;index<dto3.length;index++)
+		{
+			if(dto3[index]!=null) 
+			{
+				System.out.println(dto3[index]);
+			}
+		}
+		
 
 	}
 
