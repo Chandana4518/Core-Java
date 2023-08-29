@@ -7,6 +7,8 @@ import com.xworkz.curtain.app.repository.HospitalRepositoryImpl;
 import com.xworkz.curtain.app.util.ValidationUtil;
 
 public class HospitalServiceImpl implements HospitalService {
+	
+	private HospitalRepository hospitalRepository=new HospitalRepositoryImpl();
 
 	@Override
 	public boolean validateAndSave(HospitalDTO hospitalDTO) {
@@ -60,7 +62,7 @@ public class HospitalServiceImpl implements HospitalService {
 				return false;
 			}
 			System.out.println("All the data of the Hospital is Valid...");
-			HospitalRepository hospitalRepository=new HospitalRepositoryImpl();
+			
 			hospitalRepository.save(hospitalDTO);
 			return true;
 			
@@ -70,6 +72,37 @@ public class HospitalServiceImpl implements HospitalService {
 			System.err.println("Invalid data,can't save..");
 		}
 		return false;
+	}
+
+	@Override
+	public HospitalDTO findByHospitalName(String name) {
+		boolean isValid=ValidationUtil.validateString(name);
+		
+		if(isValid)
+		{
+			System.out.println("Name is Valid..");
+			HospitalDTO isFound= hospitalRepository.findByHospitalName(name);
+			return isFound;
+		}
+		
+	
+			System.err.println("Name is Invalid");
+		
+		return null;
+		
+	}
+
+	@Override
+	public HospitalDTO findByNameAndDoctors(String name, int doctors) {
+		boolean isValid=ValidationUtil.validateString(name)&& ValidationUtil.validateInt(doctors);
+		if(isValid)
+		{
+			System.out.println("Name and Doctors Valid");
+			HospitalDTO isFound=hospitalRepository.findByNameAndDoctors(name, doctors);
+			return isFound;
+		}
+		System.err.println("Name and Doctors Invalid");
+		return null;
 	}
 
 }

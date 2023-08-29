@@ -7,5 +7,9 @@ public interface StationRepository {
 	int TOTAL=3;
 	
 	void save(StationDTO stationDTO);
+	
+	StationDTO findByStationType(String type);
+	
+	StationDTO findByTypeAndTicketPrice(String type,int price);
 
 }

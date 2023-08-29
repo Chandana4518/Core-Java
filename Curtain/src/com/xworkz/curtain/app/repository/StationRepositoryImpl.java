@@ -25,4 +25,36 @@ public class StationRepositoryImpl implements StationRepository {
 		
 	}
 
+	@Override
+	public StationDTO findByStationType(String type) {
+		for(int index=0;index<temp;index++)
+		{
+			if(dtos[index].getStationType().equalsIgnoreCase(type))
+			{
+				System.out.println("Station type is Found");
+				return dtos[index];
+			}
+			System.out.println("Station Type is not matchinng moving to next index");
+		}
+		System.err.println("Station type is not found");
+		return null;
+	}
+
+	@Override
+	public StationDTO findByTypeAndTicketPrice(String type, int price) {
+		
+		for(int index=0;index<temp;index++)
+		{
+			if(dtos[index].getStationType().equalsIgnoreCase(type)&&dtos[index].getTicketPrice()==price)
+			{
+				System.out.println("Station type and Ticket price is Found");
+				return dtos[index];
+			}
+			System.out.println("Station Type  and Price is not matchinng moving to next index");
+		}
+		System.err.println("Station type and Ticket Price is not found");
+		
+		return null;
+	}
+
 }

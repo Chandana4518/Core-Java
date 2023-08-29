@@ -9,7 +9,7 @@ public class StationRunner {
 	public static void main(String[] args) {
 		
 		
-		StationDTO stationDTO=new StationDTO("Railway Station","BLR",0,100);
+		StationDTO stationDTO=new StationDTO("Railway Station","BLR",4,100);
 		
 		StationService stationService=new StationServiceImpl();
 		boolean stored=stationService.validateAndSave(stationDTO);
@@ -21,6 +21,12 @@ public class StationRunner {
 		{
 			System.out.println("Do not stored :" +stored);
 		}
+		
+		StationDTO foundType=stationService.findByStationType("Railway Station");
+		System.out.println(foundType);
+		
+		StationDTO foundData=stationService.findByTypeAndTicketPrice("Railway Station", 100);
+		System.out.println(foundData);
 	}
 
 }

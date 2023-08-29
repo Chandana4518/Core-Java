@@ -3,7 +3,6 @@ package com.xworkz.curtain.app.dto;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,15 +12,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @Setter
 @Getter
-@ToString (callSuper=true)
-@EqualsAndHashCode
+@ToString
 
-public class HospitalDTO extends AbstractDTO implements Serializable{
+public class PlayerDTO implements Serializable{
 	
-	private String hospitalName;
-	private String location;
-	private int noOfDoctors;
-	private int noOfBeds;
-	
+	private String name;
+	private String sportsName;
 
 }

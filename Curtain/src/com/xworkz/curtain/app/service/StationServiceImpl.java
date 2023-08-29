@@ -8,6 +8,8 @@ import com.xworkz.curtain.app.repository.StationRepositoryImpl;
 import com.xworkz.curtain.app.util.ValidationUtil;
 
 public class StationServiceImpl implements StationService {
+	
+	private StationRepository stationRepository=new StationRepositoryImpl();
 
 	@Override
 	public boolean validateAndSave(StationDTO stationDTO) {
@@ -62,7 +64,7 @@ public class StationServiceImpl implements StationService {
 				return false;
 			}
 			System.out.println("All the data of the Station is Valid...");
-			StationRepository stationRepository=new StationRepositoryImpl();
+			
 			stationRepository.save(stationDTO);
 			return true;
 			
@@ -73,6 +75,33 @@ public class StationServiceImpl implements StationService {
 		}		
 					
 		return false;
+	}
+
+	@Override
+	public StationDTO findByStationType(String type) {
+		boolean isValid=ValidationUtil.validateString(type);
+		if(isValid)
+		{
+			System.out.println("Station Type is Valid");
+			StationDTO isFound=stationRepository.findByStationType(type);
+			return isFound;
+		}
+		System.err.println("Station type is Invalid");
+		return null;
+	}
+
+	@Override
+	public StationDTO findByTypeAndTicketPrice(String type, int price) {
+		boolean isValid=ValidationUtil.validateString(type)&&ValidationUtil.validateInt(price);
+		if(isValid)
+		{
+			System.out.println("Station Type and Price is Valid");
+			StationDTO isFound=stationRepository.findByTypeAndTicketPrice(type, price);
+			return isFound;
+		}
+		System.err.println("Station type and Price is Invalid");
+		
+		return null;
 	}
 
 }
